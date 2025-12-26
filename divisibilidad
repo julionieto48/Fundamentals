@@ -1,0 +1,278 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/julionieto48/Fundamentals/blob/main/divisibilidad\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1aeeb8aj8vCf",
+        "outputId": "7ee5462f-ad21-4057-c94f-5fc8a13ea9a9"
+      },
+      "source": [
+        "# divisivilidad\n",
+        "\n",
+        "\"\"\"\n",
+        "a/b = (b * k )/ b = k  -> a = b k  ... es entero\n",
+        "a e sdivisible por b o b divide a  b|a si hay un entero k\n",
+        "\n",
+        "tengo una cantidad a que quiero dividir en grupos d ecantidad b\n",
+        "\n",
+        "3a = b x(3xk)\n",
+        "\"\"\"\n",
+        "\n",
+        "def esDivisible(a,b):\n",
+        "  if a % b == 0:\n",
+        "    print(a, \"es divisible respecto a \",b)\n",
+        "  else:\n",
+        "    print(a, \"NO es divisible respecto a \",b)\n",
+        "\n",
+        "\n",
+        "\n",
+        "c = 4\n",
+        "a = 12\n",
+        "b = 8\n",
+        "\n",
+        "d = a + b\n",
+        "\n",
+        "esDivisible(a,c)\n",
+        "esDivisible(b,c)\n",
+        "esDivisible(d,c)\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "12 es divisible respecto a  4\n",
+            "8 es divisible respecto a  4\n",
+            "20 es divisible respecto a  4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZMRV7Hm5BDHK",
+        "outputId": "57b0ba30-85c3-4fa5-cac3-25ddd24cb47d"
+      },
+      "source": [
+        "# remainders\n",
+        "\"\"\"\n",
+        "Pregunta 1\n",
+        "There is a pile of N rocks. Two players take rocks from the pile in\n",
+        "turns. In each turn a player can either take one or two rocks from the\n",
+        "pile. The player that takes the last rock wins the game. You move first.}\n",
+        "\n",
+        "\n",
+        "Pregunta 1\n",
+        "How many 3-digit non-negative numbers are there that have remainder 7 when divided by 101? Here we assume that 1-digit and 2-digit numbers are also 3-digit, they just start with 0.\n",
+        "\"\"\"\n",
+        "\n",
+        "\"\"\"\n",
+        "a = q x b + r   ; 0<r<b\n",
+        " ¿Cómo se ven los números que dan el resto 1 cuando los dividimos por 7? Veámoslos, en la línea numérica.\n",
+        "a = q x 7 + 1\n",
+        "q = ...,-3,-2,-1,0,1,2,3  cociente es el resultado de grupos\n",
+        "\n",
+        "\"\"\"\n",
+        "remainder = 1\n",
+        "q = -4\n",
+        "lista = []\n",
+        "while -4<= q and q <=5:\n",
+        "  a = q * 7 + remainder\n",
+        "  lista.append(a)\n",
+        "  q += 1\n",
+        "\n",
+        "print(lista)\n",
+        "\n",
+        "for i in range(len(lista)-1):\n",
+        "  if i > 0 :\n",
+        "    diferencia = lista[i] - lista[i - 1]\n",
+        "    print(diferencia)\n",
+        "\n",
+        "\n",
+        "\"\"\"\n",
+        " lo que podemos hacer, tenemos un número r y podemos restar b de él. Podemos restar una vez más del resultado, y así sucesivamente. Así que podemos restar repetidamente b de nuestro número, hasta que nos quedemos con un número que es menor que b.\n",
+        "Reproduce el video desde :6:50 y sigue la transcripción6:50\n",
+        "Y entonces el resto será r, el número resultante con el que nos quedamos será r y el número de resta que hemos hecho será q.\n",
+        "\n",
+        " Si tienes dos enteros a1 y a2 y tienen el mismo resto cuando los dividimos por b, si y sólo si la diferencia es divisible por b. Así que aquí está la conexión, y vamos a probarlo. Supongamos que a1 y a2 tienen el mismo resto. Entonces a1 = q1 veces b + r, a2 = q2 veces b + r.\n",
+        "\"\"\"\n",
+        "\n",
+        "\n",
+        "def tieneMismoResiduo(a_1,a_2,b):\n",
+        "  r_1 = a_1 % b\n",
+        "  r_2 = a_2 % b\n",
+        "\n",
+        "  if r_1 == r_2 :\n",
+        "    print(a_1, \" y \" , a_2 , \"Tienen el mismo residuo\", r_1)\n",
+        "    c = a_uno - a_dos\n",
+        "    print(\"la diferencia \", c ,\"es divisible por \", b )\n",
+        "  if r_1 != r_2 :\n",
+        "    print(a_1, \" y \" , a_2 , \"NO Tienen el mismo residuo\", r_1 , r_2)\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "a_uno = 5\n",
+        "a_dos = -7 * a_uno\n",
+        "\n",
+        "b = 2\n",
+        "\n",
+        "tieneMismoResiduo(a_uno,a_dos,b)\n",
+        "\n",
+        "print(\"_______________\")\n",
+        "import random\n",
+        "\"\"\"\n",
+        " Suppose a is not divisible by 2 (a is odd). What possible remainders can a have when divided by 4?\n",
+        "\n",
+        " Pregunta 1\n",
+        "Is it true that for any four integers a, b, c, d there are two of them whose difference is divisible by 3?\n",
+        "\"\"\"\n",
+        "\n",
+        "odd = []\n",
+        "\n",
+        "for i in range(0,15):\n",
+        "  odd.append( (2*i) + 1 )\n",
+        "print(odd)\n",
+        "random.choice(odd)\n",
+        "\n",
+        "N =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]\n",
+        "Z = [-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]\n",
+        "Q = [1,1.5,2,2.5]\n",
+        "divisor = 4\n",
+        "\n",
+        "def remainders(dividendo,divisor):\n",
+        "  r = []\n",
+        "  for i in range(len(dividendo)):\n",
+        "    R = dividendo[i] % divisor\n",
+        "    r.append(R)\n",
+        "\n",
+        "  print(r)\n",
+        "\n",
+        "remainders(odd,divisor)\n",
+        "remainders(N,divisor)\n",
+        "remainders(Z,divisor)\n",
+        "remainders(Q,divisor)\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[-27, -20, -13, -6, 1, 8, 15, 22, 29, 36]\n",
+            "7\n",
+            "7\n",
+            "7\n",
+            "7\n",
+            "7\n",
+            "7\n",
+            "7\n",
+            "7\n",
+            "5  y  -35 Tienen el mismo residuo 1\n",
+            "la diferencia  40 es divisible por  2\n",
+            "_______________\n",
+            "[1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29]\n",
+            "[1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1]\n",
+            "[0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0]\n",
+            "[0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0]\n",
+            "[1, 1.5, 2, 2.5]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6oOBwCZrAsbM",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "cf1705a5-b760-4116-c546-8c24e64f2f25"
+      },
+      "source": [
+        "\n",
+        "  # Greatest Common Divisor\n",
+        "\n",
+        "\"\"\"\n",
+        "  Así que sólo por definición, el mayor divisor común de A y B, donde A y B en cualquier número entero que no sea igual a cero, es el número más grande que divide tanto A y B. Así,\n",
+        "  cualquier número que divide tanto A como B se llama un divisor común de A y B. Así que el mayor divisor común es el mayor número\n",
+        "\n",
+        "  a y b se ausmen no negativos\n",
+        "\"\"\"\n",
+        "\n",
+        "def gcd(a,b):\n",
+        "  assert a >= 0 and b >= 0 and a+b > 0\n",
+        "\n",
+        "  if a == 0 or b == 0:\n",
+        "    return max(a,b)\n",
+        "  d = []\n",
+        "  for divisor in range(min(a,b) , 0 , -1):  # divisor va a ser el menor de ambos numeros y debera llegar a 0\n",
+        "    if a % divisor == 0 and b % divisor == 0:  # si ambasdivisiones son exactas\n",
+        "      print(a,b,divisor)\n",
+        "      d.append(divisor)\n",
+        "  print(max(d))\n",
+        "\n",
+        "gcd(16,24)\n",
+        "\n",
+        "# algoritmo de euclides\n",
+        "\"\"\"\n",
+        "  Un entero d divide ambos enteros a y b, si y sólo si, d divide: a menos  b y b.  lema de euclides\n",
+        "\"\"\"\n",
+        "\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "16 24 8\n",
+            "16 24 4\n",
+            "16 24 2\n",
+            "16 24 1\n",
+            "8\n",
+            "161234544 1223243574 6\n",
+            "161234544 1223243574 3\n",
+            "161234544 1223243574 2\n",
+            "161234544 1223243574 1\n",
+            "6\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
